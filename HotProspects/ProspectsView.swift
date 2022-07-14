@@ -30,6 +30,24 @@ struct ProspectsView: View {
                             Text(prospect.emailAddress)
                                 .foregroundColor(.secondary)
                         }
+                        .swipeActions {
+                            if prospect.isContacted {
+                                Button {
+                                    prospects.toggle(prospect)
+                                } label: {
+                                    Label("Mark Uncontacted", systemImage: "person.crop.circle.badge.xmark")
+                                }
+                                .tint(.blue)
+                            }
+                            else {
+                                Button {
+                                    prospects.toggle(prospect)
+                                } label: {
+                                    Label("Mark Contacted", systemImage: "person.crop.circle.fill.badge.checkmark")
+                                }
+                                .tint(.green)
+                            }
+                        }
                     }
                 }
             }
@@ -38,12 +56,6 @@ struct ProspectsView: View {
                 ToolbarItem {
                     Button {
                         isScannerPresented = true
-                    #if Development
-                        let prospect = Prospect()
-                        prospect.name = "Azam"
-                        prospect.emailAddress = "email@email.com"
-                        self.prospects.people.append(prospect)
-                    #endif
                     } label: {
                         Label("Scan", systemImage: "qrcode.viewfinder")
                     }
@@ -73,7 +85,7 @@ struct ProspectsView: View {
             case .contacted:
                 return "Contacted Person"
             case .uncontacted:
-                return "Unontacted Person"
+                return "Uncontacted Person"
         }
     }
 
@@ -88,7 +100,7 @@ struct ProspectsView: View {
                 let prospect = Prospect()
                 prospect.name = details[0]
                 prospect.emailAddress = details[1]
-                self.prospects.people.append(prospect)
+                self.prospects.add(prospect)
 
             case .failure(let error):
                 print("Scanning failed: \(error.localizedDescription)")
