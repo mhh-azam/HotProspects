@@ -15,10 +15,35 @@ struct ProspectsView: View {
 
     let filter: FilterType
 
+    @EnvironmentObject var prospects: Prospects
+
     var body: some View {
         NavigationView {
-            Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
-                .navigationTitle(title)
+            List {
+                Section {
+                    ForEach(prospects.people) { prospect in
+                        VStack (alignment: .leading) {
+                            Text(prospect.name)
+                            Text(prospect.emailAddress)
+                        }
+                    }
+                }
+            }
+            .navigationTitle(title)
+            .toolbar {
+                ToolbarItem {
+                    Button {
+                    #if Development
+                        let prospect = Prospect()
+                        prospect.name = "Azam"
+                        prospect.emailAddress = "email@email.com"
+                        self.prospects.people.append(prospect)
+                    #endif
+                    } label: {
+                        Label("Scan", systemImage: "qrcode.viewfinder")
+                    }
+                }
+            }
         }
     }
 
@@ -37,5 +62,6 @@ struct ProspectsView: View {
 struct ProspectsView_Previews: PreviewProvider {
     static var previews: some View {
         ProspectsView(filter: .none)
+            .environmentObject(Prospects())
     }
 }
