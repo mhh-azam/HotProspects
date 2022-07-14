@@ -21,10 +21,12 @@ struct ProspectsView: View {
         NavigationView {
             List {
                 Section {
-                    ForEach(prospects.people) { prospect in
+                    ForEach(filteredProspects) { prospect in
                         VStack (alignment: .leading) {
                             Text(prospect.name)
+                                .font(.headline)
                             Text(prospect.emailAddress)
+                                .foregroundColor(.secondary)
                         }
                     }
                 }
@@ -44,6 +46,17 @@ struct ProspectsView: View {
                     }
                 }
             }
+        }
+    }
+
+    var filteredProspects: [Prospect] {
+        switch filter {
+            case .none:
+                return prospects.people
+            case .contacted:
+                return prospects.people.filter { $0.isContacted }
+            case .uncontacted:
+                return prospects.people.filter { !$0.isContacted }
         }
     }
 
