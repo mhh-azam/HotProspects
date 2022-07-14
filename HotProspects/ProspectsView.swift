@@ -5,6 +5,7 @@
 //  Created by QBUser on 14/07/22.
 //
 
+import CodeScanner
 import SwiftUI
 
 struct ProspectsView: View {
@@ -16,6 +17,7 @@ struct ProspectsView: View {
     let filter: FilterType
 
     @EnvironmentObject var prospects: Prospects
+    @State private var isScannerPresented = false
 
     var body: some View {
         NavigationView {
@@ -35,6 +37,7 @@ struct ProspectsView: View {
             .toolbar {
                 ToolbarItem {
                     Button {
+                        isScannerPresented = true
                     #if Development
                         let prospect = Prospect()
                         prospect.name = "Azam"
@@ -45,6 +48,9 @@ struct ProspectsView: View {
                         Label("Scan", systemImage: "qrcode.viewfinder")
                     }
                 }
+            }
+            .sheet(isPresented: $isScannerPresented) {
+                CodeScannerView(codeTypes: [.qr], simulatedData: "Aazam Chhipa\nazam@azam.com", completion: handleScan(result:))
             }
         }
     }
@@ -68,6 +74,24 @@ struct ProspectsView: View {
                 return "Contacted Person"
             case .uncontacted:
                 return "Unontacted Person"
+        }
+    }
+
+    func handleScan(result: Result<ScanResult, ScanError>) {
+        isScannerPresented = false
+
+        switch result {
+            case .success(let result):
+                let details = result.string.components(separatedBy: "\n")
+                guard details.count == 2 else { return }
+
+                let prospect = Prospect()
+                prospect.name = details[0]
+                prospect.emailAddress = details[1]
+                self.prospects.people.append(prospect)
+
+            case .failure(let error):
+                print("Scanning failed: \(error.localizedDescription)")
         }
     }
 }
