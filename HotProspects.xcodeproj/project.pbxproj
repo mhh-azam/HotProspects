@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		B5AB22B828804EA200E6454D /* FileManager+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5AB22B728804EA200E6454D /* FileManager+Extension.swift */; };
+		B5AB22BA288052B200E6454D /* ImageSaver.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5AB22B9288052B200E6454D /* ImageSaver.swift */; };
 		B5ACD2DA287FF0850062CFC9 /* HotProspectsApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5ACD2D9287FF0850062CFC9 /* HotProspectsApp.swift */; };
 		B5ACD2DC287FF0850062CFC9 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5ACD2DB287FF0850062CFC9 /* ContentView.swift */; };
 		B5ACD2DE287FF0870062CFC9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B5ACD2DD287FF0870062CFC9 /* Assets.xcassets */; };
@@ -27,6 +28,7 @@
 
 /* Begin PBXFileReference section */
 		B5AB22B728804EA200E6454D /* FileManager+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FileManager+Extension.swift"; sourceTree = "<group>"; };
+		B5AB22B9288052B200E6454D /* ImageSaver.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageSaver.swift; sourceTree = "<group>"; };
 		B5ACD2D6287FF0850062CFC9 /* HotProspects.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HotProspects.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B5ACD2D9287FF0850062CFC9 /* HotProspectsApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HotProspectsApp.swift; sourceTree = "<group>"; };
 		B5ACD2DB287FF0850062CFC9 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -81,6 +83,7 @@
 				B5ACD2DB287FF0850062CFC9 /* ContentView.swift */,
 				B5ACD2EB287FF49A0062CFC9 /* Prospect.swift */,
 				B5ACD2E7287FF1660062CFC9 /* ProspectsView.swift */,
+				B5AB22B9288052B200E6454D /* ImageSaver.swift */,
 				B5AB22B728804EA200E6454D /* FileManager+Extension.swift */,
 				B5ACD2E9287FF1710062CFC9 /* MeView.swift */,
 				B5ACD2DD287FF0870062CFC9 /* Assets.xcassets */,
@@ -203,6 +206,7 @@
 				B5ACD2EA287FF1710062CFC9 /* MeView.swift in Sources */,
 				B5ACD2EC287FF49A0062CFC9 /* Prospect.swift in Sources */,
 				B5ACD2E8287FF1660062CFC9 /* ProspectsView.swift in Sources */,
+				B5AB22BA288052B200E6454D /* ImageSaver.swift in Sources */,
 				B5ACD2DC287FF0850062CFC9 /* ContentView.swift in Sources */,
 				B5ACD2DA287FF0850062CFC9 /* HotProspectsApp.swift in Sources */,
 				B5AB22B828804EA200E6454D /* FileManager+Extension.swift in Sources */,
@@ -352,6 +356,7 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_NSCameraUsageDescription = "We need to scan QR codes.";
+				INFOPLIST_KEY_NSPhotoLibraryAddUsageDescription = "We want to save your QR code.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -382,6 +387,7 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_NSCameraUsageDescription = "We need to scan QR codes.";
+				INFOPLIST_KEY_NSPhotoLibraryAddUsageDescription = "We want to save your QR code.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
