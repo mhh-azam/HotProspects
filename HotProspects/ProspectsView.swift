@@ -80,6 +80,7 @@ struct ProspectsView: View {
                 CodeScannerView(codeTypes: [.qr], simulatedData: "Aazam Chhipa\nazam@azam.com", completion: handleScan(result:))
             }
         }
+        .navigationViewStyle(.stack)
     }
 
     var filteredProspects: [Prospect] {
