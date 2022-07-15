@@ -49,6 +49,7 @@ struct MeView: View {
             .onChange(of: name) { _ in updateCode() }
             .onChange(of: email) { _ in updateCode() }
         }
+        .navigationViewStyle(.stack)
     }
 
     func updateCode() {
